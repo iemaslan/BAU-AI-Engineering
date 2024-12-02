@@ -1,0 +1,61 @@
+#include <iostream>
+#include <fstream>
+#include <unordered_map>
+#include <chrono>
+#include <vector>
+#include <algorithm>
+
+// Function to parse each line of the log file and extract filename
+std::string extractFilename(const std::string& line) {
+    // Your implementation to extract filenames from log lines goes here
+    // This might involve string parsing or using regular expressions
+    // Sample logic: find the position of "GET" and extract the subsequent string
+    return 0;
+}
+
+int main() {
+    // Task 1: Implement your hash table (not implemented here)
+    // CustomHashTable hashTable;
+
+    // Task 2: Use std::unordered_map
+    std::unordered_map<std::string, int> filenameMap;
+
+    // Read log file
+    std::ifstream logFile("access_log.txt");
+    if (!logFile.is_open()) {
+        std::cout << "Error opening file!" << std::endl;
+        return 1;
+    }
+
+    std::string line;
+    while (std::getline(logFile, line)) {
+        std::string filename = extractFilename(line);
+
+        // Task 1: Increment count in your hash table
+        // hashTable.incrementCount(filename);
+
+        // Task 2: Increment count in std::unordered_map
+        filenameMap[filename]++;
+    }
+    logFile.close();
+
+    // Task 3: Compare efficiency
+    auto start = std::chrono::steady_clock::now();
+
+    // Your logic to find top 10 most visited pages goes here
+    // Use either your hash table or std::unordered_map for this task
+    // You might use heap data structures or sorting to find top 10
+
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsedSeconds = end - start;
+
+    // Output the top 10 most visited pages
+    // Replace this with your actual logic to print top 10
+    std::cout << "Filename1    # of total visits" << std::endl;
+    // Print other filenames and visit counts
+
+    // Output total elapsed time
+    std::cout << "Total Elapsed Time: " << elapsedSeconds.count() << " seconds" << std::endl;
+
+    return 0;
+}
